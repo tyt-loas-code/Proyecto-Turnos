@@ -4,7 +4,7 @@ class Validar : public Validaciones
 {
     public:
         bool validarCedula(std::string cedula) override;
-        bool validarNombre(std::string nombre) override;
+        bool validarPalabra(std::string palabra) override;
         bool validarPlaca(std::string placa) override;
         bool validarMatricula(std::string matricula) override;
         bool validarHora(std::string hora) override;

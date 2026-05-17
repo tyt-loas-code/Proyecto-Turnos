@@ -20,7 +20,7 @@ public:
    void setCabeza(Nodo*);
    Nodo* getCola();
    void setCola(Nodo*);
-   void insertar(std::string cedula, std::string nombre, std::string placa, std::string matricula, std::string hora, std::string fecha);
+   void insertar(std::string cedula, std::string nombre, std::string apellido, std::string placa, std::string matricula, std::string hora, std::string fecha);
    void eliminar(std::string);
    Nodo* buscarTurno(std::string);
 

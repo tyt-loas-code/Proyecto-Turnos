@@ -13,7 +13,7 @@ class Validaciones
 {
 public:
    virtual bool validarCedula(std::string)=0;
-   virtual bool validarNombre(std::string)=0;
+   virtual bool validarPalabra(std::string)=0;
    virtual bool validarMatricula(std::string)=0;
    virtual bool validarPlaca(std::string)=0;
    virtual bool validarHora(std::string)=0;

@@ -3,12 +3,37 @@
 #include <regex>
 #include <fstream>
 
+AccionesMenu::AccionesMenu()
+{
+}
+
+AccionesMenu::~AccionesMenu()
+{
+}
+
+void AccionesMenu::cargarDatos(Lista* milista)
+{
+    std::ifstream archivo("C:/Programas/ListaSimples/datos.txt");
+    if (!archivo.is_open()){
+        std::cout<<"No se encontro el archivo"<<std::endl;
+        return;
+    }
+
+    std::string c, n, a, p, m, h, f;
+    while (archivo >> c >> n >> a >> p >> m >> h >> f)
+    {
+        milista->insertar(c,n,a,p,m,h,f);
+    }
+    std::cout<<"Archibos cargados" <<std::endl;
+    archivo.close();
+}
+
 void AccionesMenu::ingresarTurno(Lista* milista)
 {
     Validar v;
     std::cout<<"INGRESAR UN TURNO"<<std::endl;
     bool validar=false;
-    std::string cedula, nombre, placa, matricula, hora, fecha;
+    std::string cedula, nombre, apellido, placa, matricula, hora, fecha;
     while (!validar)
     {
         std::cout<<"Ingrese la cedula"<<std::endl;
@@ -16,7 +41,9 @@ void AccionesMenu::ingresarTurno(Lista* milista)
         validar = v.validarCedula(cedula);
     }
     
-    milista->insertar(cedula,nombre,placa,matricula,hora,fecha);
+    milista->insertar(cedula,nombre,apellido,placa,matricula,hora,fecha);
+    std::cin.ignore();
+    std::cin.get();
 }
 
 void AccionesMenu::eliminarTurno(Lista* miLista)
@@ -41,6 +68,7 @@ void AccionesMenu::imprimirTurno(Lista* miLista)
         std::cout<<"TURNO"<<std::endl;
         std::cout<<"Cedula: "<<t.getCedula()<<std::endl;
         std::cout<<"Nombre: "<<t.getNombre()<<std::endl;
+        std::cout<<"Apellido: "<<t.getApellido()<<std::endl;
         std::cout<<"Placa: "<<t.getPlaca()<<std::endl;
         std::cout<<"Matricula: "<<t.getMatricula()<<std::endl;
         std::cout<<"Hora: "<<t.getHora()<<std::endl;
@@ -51,4 +79,9 @@ void AccionesMenu::imprimirTurno(Lista* miLista)
     std::cin.ignore();
     std::cin.get();
     system ("cls");
+}
+
+void AccionesMenu::generarCorreos(Lista* milista)
+{
+
 }

@@ -79,9 +79,9 @@ void Lista::setCola(Nodo* newCola)
    this->cola = newCola;
 }
 
-void Lista::insertar(std::string cedula, std::string nombre, std::string placa, std::string matricula, std::string hora, std::string fecha)
+void Lista::insertar(std::string cedula, std::string nombre, std::string apellido, std::string placa, std::string matricula, std::string hora, std::string fecha)
 {
-   Nodo* nuevo = new Nodo(Turno(cedula,nombre,placa,matricula,hora,fecha),nullptr);
+   Nodo* nuevo = new Nodo(Turno(cedula,nombre,apellido,placa,matricula,hora,fecha),nullptr);
 
    if(cabeza==nullptr){
         cabeza=nuevo;
@@ -143,7 +143,7 @@ Nodo* Lista::buscarTurno(std::string cedula)
       {
          return actual;      
       }
-      actual->setSiguiente(actual->getSiguiente());
+      actual = actual->getSiguiente();
    } while (actual->getSiguiente() != cabeza);
    
    return nullptr;

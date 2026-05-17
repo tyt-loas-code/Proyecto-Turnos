@@ -56,6 +56,31 @@ void Turno::setNombre(std::string newNombre)
 }
 
 ////////////////////////////////////////////////////////////////////////
+// Name:       Turno::getApellido()
+// Purpose:    Implementation of Turno::getApellido()
+// Return:     std::string
+////////////////////////////////////////////////////////////////////////
+
+std::string Turno::getApellido(void)
+{
+   return apellido;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+// Name:       Turno::setNombre(std::string newApellido)
+// Purpose:    Implementation of Turno::setApellido()
+// Parameters:
+// - newNombre
+// Return:     void
+////////////////////////////////////////////////////////////////////////
+
+void Turno::setApellido(std::string newApellido)
+{
+   nombre = newApellido;
+}
+
+////////////////////////////////////////////////////////////////////////
 // Name:       Turno::getPlaca()
 // Purpose:    Implementation of Turno::getPlaca()
 // Return:     std::string
@@ -164,10 +189,11 @@ void Turno::setFecha(std::string newFecha)
 // Return:     
 ////////////////////////////////////////////////////////////////////////
 
-Turno::Turno(std::string cedula, std::string nombre, std::string placa, std::string matricula, std::string hora, std::string fecha)
+Turno::Turno(std::string cedula, std::string nombre, std::string apellido, std::string placa, std::string matricula, std::string hora, std::string fecha)
 {
    this->cedula = cedula;
    this->nombre = nombre;
+   this->apellido = apellido;
    this->placa = placa;
    this->matricula = matricula;
    this->hora = hora;

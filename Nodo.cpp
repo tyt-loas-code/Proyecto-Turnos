@@ -59,3 +59,7 @@ Nodo::~Nodo()
    // TODO : implement
 }
 
+Turno Nodo::getTurno()
+{
+   return turno;
+}

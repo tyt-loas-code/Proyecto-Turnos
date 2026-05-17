@@ -3,10 +3,9 @@
 #include <iostream>
 #include <fstream>
 
-
 bool verificarExistencia(std::string cedula)
 {
-    std::ifstream archivo("C:/Programas/ListaSimples/datos.txt");
+    std::ifstream archivo("C:/Programas/ProyectoTurnos/datos.txt");
     if (archivo.is_open()){
     } else {
         std::cout<<"No se encontro el archivo"<< std::endl;
@@ -14,7 +13,7 @@ bool verificarExistencia(std::string cedula)
         return false;
     }
     std::string nombre, ced;
-    while (archivo >> ced >> nombre) {
+    while (archivo >> ced) {
       if (ced == cedula){
          std::cout<<"Cedula ya existe en la lista"<<std::endl;
          return true;
@@ -22,6 +21,25 @@ bool verificarExistencia(std::string cedula)
     }
     archivo.close();
     return false;
+}
+
+bool codigoProvincia(std::string cod)
+{
+   std::ifstream archivo("C:/Programas/ProyectoTurnos/Provincias.txt");
+   if (!archivo.is_open())
+   {
+      std::cout<<"No se pudo abrir el arhivo"<<std::endl;
+      return true;
+   }
+   std::string codigo;
+   while (archivo >> codigo)
+   {
+      if (codigo == cod)
+      {
+         return true;
+      }
+   }
+   return false;   
 }
 
 int obtenerSize(std::string palabra)
@@ -35,7 +53,7 @@ int obtenerSize(std::string palabra)
    return size;
 }
 
-bool Validaciones::validarCedula(std::string cedula)
+bool Validar::validarCedula(std::string cedula)
 {
     std::regex patron("^[0-9]+$");
    if (!std::regex_match(cedula, patron)){
@@ -47,18 +65,23 @@ bool Validaciones::validarCedula(std::string cedula)
       std::cout<<"Solo se permiten 10 digitos"<<std::endl;
       return false;
    }
+   std::string codProvincia = cedula.substr(0,2);
+   if(!codigoProvincia(codProvincia))
+   {
+      return false;
+   }
 
-   if (!verificarExistencia(cedula))
+   if (verificarExistencia(cedula))
    {
     std::cout<<"Cedula con turno registrado"<<std::endl;
    }
    return true;
 }
 
-bool Validar::validarNombre(std::string nombre)
+bool Validar::validarPalabra(std::string palabra)
 {
        std::regex patron("^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$");
-       if(!std::regex_match(nombre,patron))
+       if(!std::regex_match(palabra,patron))
        {
         std::cout<<"Nombre solo debe contener letras"<<std::endl;
         return false;
@@ -75,4 +98,19 @@ bool Validar::validarPlaca(std::string placa)
         return false;
     }
     return true;
+}
+
+bool Validar::validarMatricula(std::string matricula)
+{
+   return true;
+}
+
+bool Validar::validarHora(std::string hora)
+{
+   return true;
+}
+
+bool Validar::validarFecha(std::string fecha)
+{
+   return true;
 }

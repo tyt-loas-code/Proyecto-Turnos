@@ -16,6 +16,8 @@ public:
    void setCedula(std::string newCedula);
    std::string getNombre(void);
    void setNombre(std::string newNombre);
+   std::string getApellido(void);
+   void setApellido(std::string newAppelido);
    std::string getPlaca(void);
    void setPlaca(std::string newPlaca);
    std::string getMatricula(void);
@@ -24,7 +26,7 @@ public:
    void setHora(std::string newHora);
    std::string getFecha(void);
    void setFecha(std::string newFecha);
-   Turno(std::string cedula, std::string nombre, std::string placa, std::string matricula, std::string hora, std::string fecha);
+   Turno(std::string cedula, std::string nombre, std::string apellido, std::string placa, std::string matricula, std::string hora, std::string fecha);
    Turno();
    ~Turno();
 
@@ -32,6 +34,7 @@ protected:
 private:
    std::string cedula;
    std::string nombre;
+   std::string apellido;
    std::string placa;
    std::string matricula;
    std::string hora;
